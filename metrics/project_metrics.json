@@ -1,0 +1,41 @@
+{
+  "project": "MCP 多智能体金融助理系统",
+  "summary": {
+    "files": 16,
+    "total_lines": 2319,
+    "code_lines": 1785,
+    "mcp_servers": 7,
+    "mcp_tools": 14,
+    "function_tools": 0,
+    "agents": 10,
+    "sse_clients": 8,
+    "api_endpoints": 2,
+    "handoffs": 2
+  },
+  "per_project": {
+    "project1_stock_counselor": {
+      "total_lines": 770,
+      "code_lines": 579,
+      "mcp_servers": 3,
+      "mcp_tools": 4,
+      "function_tools": 0,
+      "agents": 0,
+      "sse_clients": 0,
+      "api_endpoints": 0,
+      "handoffs": 0,
+      "files": 6
+    },
+    "project2_finance_assistant": {
+      "total_lines": 1549,
+      "code_lines": 1206,
+      "mcp_servers": 4,
+      "mcp_tools": 10,
+      "function_tools": 0,
+      "agents": 10,
+      "sse_clients": 8,
+      "api_endpoints": 2,
+      "handoffs": 2,
+      "files": 10
+    }
+  }
+}
