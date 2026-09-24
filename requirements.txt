@@ -1,0 +1,15 @@
+pandas
+numpy
+statsmodels
+mcp
+openai
+python-dotenv
+openai-agents
+fastapi
+uvicorn
+litellm
+chromadb==1.0.8
+dashscope
+gradio
+python-docx
+requests

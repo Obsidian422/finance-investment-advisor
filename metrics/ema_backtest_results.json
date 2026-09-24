@@ -1,0 +1,69 @@
+{
+  "project": "MCP 多智能体金融助理系统 - EMA 股价预测回测",
+  "params": {
+    "alpha": 0.8,
+    "min_train": 20,
+    "horizons": [
+      1,
+      7
+    ]
+  },
+  "per_stock": {
+    "上证指数": {
+      "n_days": 378,
+      "h1": {
+        "mae": 0.7615,
+        "rmse": 1.1503,
+        "mape_pct": 0.95,
+        "direction_accuracy_pct": 54.49,
+        "samples": 358
+      },
+      "h7": {
+        "mae": 2.4452,
+        "rmse": 3.2853,
+        "mape_pct": 3.05,
+        "direction_accuracy_pct": 43.59,
+        "samples": 352
+      }
+    },
+    "中国石油": {
+      "n_days": 378,
+      "h1": {
+        "mae": 0.5589,
+        "rmse": 0.8801,
+        "mape_pct": 0.92,
+        "direction_accuracy_pct": 51.69,
+        "samples": 358
+      },
+      "h7": {
+        "mae": 1.8499,
+        "rmse": 2.5703,
+        "mape_pct": 3.07,
+        "direction_accuracy_pct": 43.3,
+        "samples": 352
+      }
+    },
+    "中国银行": {
+      "n_days": 378,
+      "h1": {
+        "mae": 0.3422,
+        "rmse": 0.5511,
+        "mape_pct": 0.98,
+        "direction_accuracy_pct": 51.12,
+        "samples": 358
+      },
+      "h7": {
+        "mae": 1.1388,
+        "rmse": 1.5709,
+        "mape_pct": 3.26,
+        "direction_accuracy_pct": 45.27,
+        "samples": 352
+      }
+    }
+  },
+  "summary": {
+    "avg_mape_pct_h1": 0.95,
+    "best_mape_pct_h1": 0.92,
+    "avg_direction_accuracy_pct_h1": 52.43
+  }
+}
