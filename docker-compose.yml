@@ -1,0 +1,76 @@
+# =============================================================================
+# 多智能体金融投资助理 —— 一键起全栈
+#
+#   cp .env.example .env      # 填好 API_KEY
+#   docker compose up --build
+#
+# 起来之后：
+#   · FastAPI   http://localhost:9998
+#   · Gradio    http://localhost:9996
+#
+# ⚠ 本文件尚未在 Docker 环境构建验证过（开发机没有装 Docker）。
+#   首次 `docker compose up --build` 后请把结果反馈回来，我再据实修正。
+# =============================================================================
+
+services:
+
+  # ---------------------------------------------------------------------------
+  # 7 个 MCP Server 同容器运行（原因见 Dockerfile 顶部注释：server_url 是单值）
+  # ---------------------------------------------------------------------------
+  mcp-servers:
+    build: .
+    image: finance-investment-advisor:local
+    container_name: fia-mcp-servers
+    env_file:
+      - .env
+    environment:
+      # Server 自身不互相调用，只需要本机可达
+      server_url: 127.0.0.1
+    volumes:
+      # 日志落到宿主机，排查方便（与裸机版 logs/ 布局一致）
+      - ./logs:/app/logs
+    healthcheck:
+      test: ["CMD", "python", "docker/healthcheck.py"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  # FastAPI 多用户会话接口
+  # server_url 指向 mcp-servers 服务名 —— compose 网络内按服务名解析
+  # ---------------------------------------------------------------------------
+  app:
+    image: finance-investment-advisor:local
+    container_name: fia-app
+    depends_on:
+      mcp-servers:
+        condition: service_healthy
+    env_file:
+      - .env
+    environment:
+      server_url: mcp-servers
+    ports:
+      - "9998:9998"
+    # 必须切到该目录再跑：chat_api.py 用 `from multi_user_..._with_session import *`
+    command: ["bash", "-c", "cd /app/project2_finance_assistant && exec python chat_api.py"]
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  # Gradio 前端
+  # ---------------------------------------------------------------------------
+  gradio:
+    image: finance-investment-advisor:local
+    container_name: fia-gradio
+    depends_on:
+      mcp-servers:
+        condition: service_healthy
+    env_file:
+      - .env
+    environment:
+      server_url: mcp-servers
+    ports:
+      - "9996:9996"
+    command: ["bash", "-c", "cd /app/project2_finance_assistant && exec python gradio_demo.py"]
+    restart: unless-stopped

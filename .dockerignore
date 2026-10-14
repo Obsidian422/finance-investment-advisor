@@ -1,0 +1,24 @@
+# .env 绝不能进镜像 —— 里面是 API Key。运行时用 compose 的 env_file 注入。
+.env
+**/.env
+*.env.local
+
+# 虚拟环境与缓存
+venv/
+.venv/
+**/venv/
+**/.venv/
+__pycache__/
+**/__pycache__/
+*.pyc
+
+# 运行期产物
+logs/
+indexes/
+output_files/
+chroma_db/
+
+# 版本控制
+# 注意：docs/ 与 tests/ 刻意保留 —— 镜像里能直接跑端到端测试，与仓库「可复现」的口径一致
+.git/
+.gitignore
