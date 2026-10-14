@@ -49,14 +49,12 @@ class QwenEmbeddingFunction:
         self.api_key = api_key
         self.model_name = model_name
         self.base_url = "https://dashscope.aliyuncs.com/api/v1/services/embeddings/text-embedding/text-embedding"
-    def __call__(self, input: List[str]) -> List[List[float]]:
-        """
-        调用通义千问API获取文本的embedding
-        参数:
-            input: 需要embedding的文本列表 (参数名必须为input以匹配ChromaDB要求)
-        返回:
-            文本对应的embedding列表
-        """
+    # DashScope text-embedding-v1 单次请求最多 25 条，超过会返回 400
+    # （batch size is invalid, it should not be larger than 25）。
+    # 知识库有 50 条政策，必须分批发送 —— 否则一次性灌库必然失败。
+    MAX_BATCH = 25
+
+    def _embed_batch(self, texts: List[str]) -> List[List[float]]:
         headers = {
             "Authorization": f"Bearer {self.api_key}",
             "Content-Type": "application/json"
@@ -64,7 +62,7 @@ class QwenEmbeddingFunction:
         payload = {
             "model": self.model_name,
             "input": {
-                "texts": input
+                "texts": texts
             }
         }
         response = requests.post(self.base_url, json=payload, headers=headers)
@@ -73,12 +71,26 @@ class QwenEmbeddingFunction:
         result = response.json()
         if "output" not in result or "embeddings" not in result["output"]:
             raise Exception(f"API返回格式异常: {result}")
-        # 提取embedding数据并按原始文本顺序返回
-        embeddings = [None] * len(input)
+        # 接口返回顺序不保证与入参一致，按 text_index 回填对齐
+        embeddings = [None] * len(texts)
         for item in result["output"]["embeddings"]:
-            index = item["text_index"]
-            embeddings[index] = item["embedding"]
+            embeddings[item["text_index"]] = item["embedding"]
         return embeddings
+
+    def __call__(self, input: List[str]) -> List[List[float]]:
+        """
+        调用通义千问API获取文本的embedding（自动按 25 条分批）
+        参数:
+            input: 需要embedding的文本列表 (参数名必须为input以匹配ChromaDB要求)
+        返回:
+            文本对应的embedding列表，顺序与入参一致
+        """
+        if not input:
+            return []
+        vectors: List[List[float]] = []
+        for i in range(0, len(input), self.MAX_BATCH):
+            vectors.extend(self._embed_batch(input[i:i + self.MAX_BATCH]))
+        return vectors
 
 #%%
 import uuid

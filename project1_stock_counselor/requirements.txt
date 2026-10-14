@@ -1,7 +1,8 @@
 pandas
 numpy
 statsmodels
-mcp
+# 锁 <2：mcp 2.x 改名了 fastmcp，见根目录 requirements.txt 的说明
+mcp<2
 openai
 python-dotenv
 requests

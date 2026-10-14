@@ -1,14 +1,15 @@
 pandas
 numpy
 statsmodels
-mcp
+# 锁 <2：mcp 2.x 改名了 fastmcp，见根目录 requirements.txt 的说明
+mcp<2
 openai
 python-dotenv
 requests
 openai-agents
 fastapi
 uvicorn
-litellm
+# litellm 已移除：代码零引用，且会让 pip install 失败
 chromadb==1.0.8
 dashscope
 gradio
