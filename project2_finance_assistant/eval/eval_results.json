@@ -1,0 +1,1659 @@
+{
+  "summary": {
+    "tag": "retrieval+judge",
+    "run_at": "2026-10-14T08:46:05.600505+00:00",
+    "k": 5,
+    "threshold": 0.5,
+    "judge": true,
+    "n_cases": 66,
+    "in_scope": {
+      "n": 50,
+      "hit@1": 0.98,
+      "hit@5": 1.0,
+      "hit@5_passed": 0.98,
+      "mrr": 0.9867
+    },
+    "paraphrase": {
+      "n": 8,
+      "hit@1": 0.5,
+      "hit@5": 0.875,
+      "hit@5_passed": 0.375,
+      "mrr": 0.6083
+    },
+    "out_of_scope": {
+      "n": 8,
+      "abstain_accuracy": 1.0,
+      "max_false_positive_similarity": 0.3684
+    },
+    "judge_avg": {
+      "faithfulness": 5.0,
+      "relevance": 5.0,
+      "n_scored": 53,
+      "n_total": 58
+    }
+  },
+  "cases": [
+    {
+      "id": "s00",
+      "type": "in_scope",
+      "question": "基金的投资目标应该怎么设定？",
+      "expect_ids": [
+        0
+      ],
+      "retrieved_similarities": [
+        0.8071,
+        0.5635,
+        0.5203,
+        0.5133,
+        0.4755
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 4,
+      "max_similarity": 0.8070913553237915,
+      "answer": "根据参考资料，需明确基金的投资目标，如资本增值、稳定收益、ESG投资等。关于具体的设定方法或步骤，资料未覆盖。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案严格基于参考资料提取了投资目标类型，并客观指出资料未涵盖具体设定步骤，忠实且切题。"
+      }
+    },
+    {
+      "id": "s01",
+      "type": "in_scope",
+      "question": "投资范围一般包含哪些资产类别？",
+      "expect_ids": [
+        1
+      ],
+      "retrieved_similarities": [
+        0.7287,
+        0.594,
+        0.517,
+        0.5033,
+        0.4829
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 4,
+      "max_similarity": 0.7287482619285583,
+      "answer": "根据参考资料，投资范围一般包含的资产类别有：股票、债券、衍生品、不动产等。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案完全基于参考资料准确回答了问题中关于投资范围包含的资产类别，无多余或无关信息。"
+      }
+    },
+    {
+      "id": "s02",
+      "type": "in_scope",
+      "question": "哪些行业是禁止投资的？",
+      "expect_ids": [
+        2
+      ],
+      "retrieved_similarities": [
+        0.7623,
+        0.5771,
+        0.4836,
+        0.4581,
+        0.4573
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 2,
+      "max_similarity": 0.762276828289032,
+      "answer": "根据参考资料，禁止投资的行业及领域包括：\n1. 非法或受国际制裁的行业（如毒品、武器、恐怖主义相关产业）；\n2. 涉及童工或强迫劳动的企业。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案完全基于参考资料，准确且直接地回答了禁止投资的行业和领域，无任何资料外内容或偏题现象。"
+      }
+    },
+    {
+      "id": "s03",
+      "type": "in_scope",
+      "question": "单一资产类别最多能配置多少比例？",
+      "expect_ids": [
+        3
+      ],
+      "retrieved_similarities": [
+        0.8855,
+        0.5649,
+        0.5395,
+        0.5227,
+        0.5087
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 5,
+      "max_similarity": 0.8855105638504028,
+      "answer": "资料未覆盖具体比例，仅举例说明如股票不超过70%。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案准确反映了参考资料中仅举例说明股票不超过70%而未给出统一具体比例的事实，完全忠实于资料且正面回答了问题。"
+      }
+    },
+    {
+      "id": "s04",
+      "type": "in_scope",
+      "question": "杠杆使用的上限是多少？",
+      "expect_ids": [
+        4
+      ],
+      "retrieved_similarities": [
+        0.7951,
+        0.7853,
+        0.4013,
+        0.374,
+        0.3688
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 2,
+      "max_similarity": 0.795086681842804,
+      "answer": "根据参考资料，杠杆使用的上限为不超过净资产的30%（或杠杆倍数不超过5倍）。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案完全基于参考资料提取了杠杆上限的具体数值，直接且正面地回答了问题，无外部信息。"
+      }
+    },
+    {
+      "id": "s05",
+      "type": "in_scope",
+      "question": "风险控制委员会负责什么？",
+      "expect_ids": [
+        5
+      ],
+      "retrieved_similarities": [
+        0.7694,
+        0.4648,
+        0.4409,
+        0.4219,
+        0.3929
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 1,
+      "max_similarity": 0.7694233655929565,
+      "answer": "风险控制委员会负责定期评估市场、信用和流动性风险。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案完全基于参考资料，准确且直接地回答了问题。"
+      }
+    },
+    {
+      "id": "s06",
+      "type": "in_scope",
+      "question": "最大回撤阈值怎么设？",
+      "expect_ids": [
+        6
+      ],
+      "retrieved_similarities": [
+        0.8937,
+        0.4841,
+        0.4524,
+        0.4421,
+        0.4089
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 1,
+      "max_similarity": 0.8936657905578613,
+      "answer": "根据参考资料，最大回撤阈值可设定为单月回撤不超过10%。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案完全基于参考资料，准确且直接地回答了如何设定最大回撤阈值的问题。"
+      }
+    },
+    {
+      "id": "s07",
+      "type": "in_scope",
+      "question": "可以做裸卖空吗？",
+      "expect_ids": [
+        7
+      ],
+      "retrieved_similarities": [
+        0.8273,
+        0.3561,
+        0.3373,
+        0.3341,
+        0.3299
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 1,
+      "max_similarity": 0.8272606134414673,
+      "answer": "不可以，禁止裸卖空。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案直接回答了问题，且内容完全基于参考资料，未引入任何外部信息。"
+      }
+    },
+    {
+      "id": "s08",
+      "type": "in_scope",
+      "question": "加密货币这类高波动资产的仓位有限制吗？",
+      "expect_ids": [
+        8
+      ],
+      "retrieved_similarities": [
+        0.8663,
+        0.5724,
+        0.5205,
+        0.4912,
+        0.4841
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 3,
+      "max_similarity": 0.8662792444229126,
+      "answer": "是的，对加密货币这类高波动性资产设置了仓位限制。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案直接准确地回答了问题，且所有事实均严格来源于参考资料。"
+      }
+    },
+    {
+      "id": "s09",
+      "type": "in_scope",
+      "question": "用什么模型来监控投资组合风险？",
+      "expect_ids": [
+        9
+      ],
+      "retrieved_similarities": [
+        0.7334,
+        0.4912,
+        0.4679,
+        0.4565,
+        0.4381
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 1,
+      "max_similarity": 0.7333875298500061,
+      "answer": "采用 VaR（风险价值模型）。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案完全基于参考资料，且直接准确地回答了问题。"
+      }
+    },
+    {
+      "id": "s10",
+      "type": "in_scope",
+      "question": "需要遵守哪些法律法规？",
+      "expect_ids": [
+        10
+      ],
+      "retrieved_similarities": [
+        0.5656,
+        0.3841,
+        0.3673,
+        0.3649,
+        0.3499
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 1,
+      "max_similarity": 0.5656238794326782,
+      "answer": "需要遵守《证券法》、《基金法》及相关监管规定。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案完全基于参考资料，且直接准确地回答了问题。"
+      }
+    },
+    {
+      "id": "s11",
+      "type": "in_scope",
+      "question": "内幕交易怎么防范？",
+      "expect_ids": [
+        11
+      ],
+      "retrieved_similarities": [
+        0.6132,
+        0.4697,
+        0.4611,
+        0.4376,
+        0.4294
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 1,
+      "max_similarity": 0.6131678223609924,
+      "answer": "根据参考资料，防范内幕交易需：禁止内幕交易，并建立信息隔离墙（Chinese Wall）。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案完全基于参考资料，准确且直接地回答了防范内幕交易的方法。"
+      }
+    },
+    {
+      "id": "s12",
+      "type": "in_scope",
+      "question": "KYC 和反洗钱有什么要求？",
+      "expect_ids": [
+        12
+      ],
+      "retrieved_similarities": [
+        0.7313,
+        0.3222,
+        0.319,
+        0.2966,
+        0.2947
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 1,
+      "max_similarity": 0.7312884330749512,
+      "answer": "严格执行 KYC（了解你的客户）和 AML（反洗钱）政策。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案完全基于参考资料，没有引入外部信息，且直接回答了问题中关于KYC和反洗钱的要求。"
+      }
+    },
+    {
+      "id": "s13",
+      "type": "in_scope",
+      "question": "可以向投资者承诺保本吗？",
+      "expect_ids": [
+        13
+      ],
+      "retrieved_similarities": [
+        0.8657,
+        0.4861,
+        0.4655,
+        0.4599,
+        0.4498
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 1,
+      "max_similarity": 0.8657497763633728,
+      "answer": "不可以。禁止向投资者承诺保本。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案直接回答了问题，且所有内容均严格基于参考资料，无多余信息。"
+      }
+    },
+    {
+      "id": "s14",
+      "type": "in_scope",
+      "question": "要向监管机构报送哪些数据？",
+      "expect_ids": [
+        14
+      ],
+      "retrieved_similarities": [
+        0.7393,
+        0.482,
+        0.476,
+        0.4591,
+        0.4333
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 1,
+      "max_similarity": 0.7393035888671875,
+      "answer": "需要向监管机构报送持仓和交易数据。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案完全基于参考资料，准确且直接地回答了需要向监管机构报送的数据类型。"
+      }
+    },
+    {
+      "id": "s15",
+      "type": "in_scope",
+      "question": "最低现金储备比例要求是多少？",
+      "expect_ids": [
+        15
+      ],
+      "retrieved_similarities": [
+        0.917,
+        0.5136,
+        0.4869,
+        0.4768,
+        0.4599
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 2,
+      "max_similarity": 0.9170411825180054,
+      "answer": "根据参考资料，最低现金储备比例要求为5%（示例）。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案准确提取了参考资料中的示例数值并正面回答了问题，无多余或外部信息。"
+      }
+    },
+    {
+      "id": "s16",
+      "type": "in_scope",
+      "question": "非流动性资产的投资比例有限制吗？",
+      "expect_ids": [
+        16
+      ],
+      "retrieved_similarities": [
+        0.8895,
+        0.7043,
+        0.6591,
+        0.6049,
+        0.5945
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 5,
+      "max_similarity": 0.8895130753517151,
+      "answer": "是的，有限制。根据参考资料，明确规定限制非流动性资产（如私募股权、房地产）的投资比例。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案直接正面回答了问题，且所有事实均严格来源于参考资料，无资料外内容。"
+      }
+    },
+    {
+      "id": "s17",
+      "type": "in_scope",
+      "question": "极端市场情况下能限制赎回吗？",
+      "expect_ids": [
+        17
+      ],
+      "retrieved_similarities": [
+        0.8555,
+        0.6751,
+        0.571,
+        0.5589,
+        0.5316
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 5,
+      "max_similarity": 0.8555142879486084,
+      "answer": "能。可以制定极端市场条件下的赎回限制政策。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案直接正面回答了问题，且内容完全基于参考资料，未引入外部信息。"
+      }
+    },
+    {
+      "id": "s18",
+      "type": "in_scope",
+      "question": "压力测试多久做一次？",
+      "expect_ids": [
+        18
+      ],
+      "retrieved_similarities": [
+        0.5683,
+        0.253,
+        0.2466,
+        0.2457,
+        0.2391
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 1,
+      "max_similarity": 0.5682718753814697,
+      "answer": "根据参考资料，压力测试需“定期”进行，具体频率资料未覆盖。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案准确提取了参考资料中的“定期”来回答频率问题，并客观指出资料未提供具体频率，完全忠实且切题。"
+      }
+    },
+    {
+      "id": "s19",
+      "type": "in_scope",
+      "question": "对资产变现周期有什么要求？",
+      "expect_ids": [
+        19
+      ],
+      "retrieved_similarities": [
+        0.6075,
+        0.4999,
+        0.4587,
+        0.4446,
+        0.4446
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 1,
+      "max_similarity": 0.607528567314148,
+      "answer": "禁止投资于无法在30天内变现的资产。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案完全基于参考资料，准确且直接地回答了关于资产变现周期的要求。"
+      }
+    },
+    {
+      "id": "s20",
+      "type": "in_scope",
+      "question": "高污染、高碳排放的行业能投吗？",
+      "expect_ids": [
+        20
+      ],
+      "retrieved_similarities": [
+        0.8054,
+        0.4923,
+        0.4052,
+        0.3788,
+        0.3457
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 1,
+      "max_similarity": 0.8054097890853882,
+      "answer": "不能投。根据参考资料，明确排除高污染、高碳排放行业（如煤炭、石油）。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案直接回答了问题，且所有事实均严格来源于参考资料，无多余信息。"
+      }
+    },
+    {
+      "id": "s21",
+      "type": "in_scope",
+      "question": "ESG 投资优先投向哪些标的？",
+      "expect_ids": [
+        21
+      ],
+      "retrieved_similarities": [
+        0.8341,
+        0.6539,
+        0.6069,
+        0.4433,
+        0.3867
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 3,
+      "max_similarity": 0.8341128826141357,
+      "answer": "根据参考资料，ESG 投资优先投向可再生能源、绿色债券等 ESG 标的。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案完全基于参考资料，准确且直接地回答了ESG投资优先投向的标的。"
+      }
+    },
+    {
+      "id": "s22",
+      "type": "in_scope",
+      "question": "被投企业需要披露什么数据？",
+      "expect_ids": [
+        22
+      ],
+      "retrieved_similarities": [
+        0.7844,
+        0.448,
+        0.4254,
+        0.3746,
+        0.3679
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 1,
+      "max_similarity": 0.7844352722167969,
+      "answer": "ESG 相关数据。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案完全基于参考资料，且直接准确地回答了问题。"
+      }
+    },
+    {
+      "id": "s23",
+      "type": "in_scope",
+      "question": "碳排放强度下降目标怎么设定？",
+      "expect_ids": [
+        23
+      ],
+      "retrieved_similarities": [
+        0.9481,
+        0.5212,
+        0.3152,
+        0.3008,
+        0.2855
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 2,
+      "max_similarity": 0.9481147527694702,
+      "answer": "根据参考资料，碳排放强度下降目标可设定为如每年降低 5%。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案完全基于参考资料，准确且直接地回答了关于碳排放强度下降目标如何设定的问题。"
+      }
+    },
+    {
+      "id": "s24",
+      "type": "in_scope",
+      "question": "涉及童工或强迫劳动的企业能投资吗？",
+      "expect_ids": [
+        24
+      ],
+      "retrieved_similarities": [
+        0.8755,
+        0.4288,
+        0.3423,
+        0.3034,
+        0.2999
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 1,
+      "max_similarity": 0.8755086660385132,
+      "answer": "不能。禁止投资于涉及童工或强迫劳动的企业。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案完全基于参考资料，且直接准确地回答了问题。"
+      }
+    },
+    {
+      "id": "s25",
+      "type": "in_scope",
+      "question": "什么是最佳执行原则？",
+      "expect_ids": [
+        25
+      ],
+      "retrieved_similarities": [
+        0.7635,
+        0.2914,
+        0.2891,
+        0.2861,
+        0.2784
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 1,
+      "max_similarity": 0.7635480165481567,
+      "answer": "根据参考资料，最佳执行原则旨在降低交易成本。关于其具体定义，资料未覆盖。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案准确提取了资料中关于最佳执行原则的目的，并客观指出资料未提供具体定义，完全忠实于资料且正面回答了问题。"
+      }
+    },
+    {
+      "id": "s26",
+      "type": "in_scope",
+      "question": "对换手率有要求吗？",
+      "expect_ids": [
+        26
+      ],
+      "retrieved_similarities": [
+        0.708,
+        0.4765,
+        0.4423,
+        0.4419,
+        0.4222
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 1,
+      "max_similarity": 0.707963764667511,
+      "answer": "有要求。禁止频繁交易，避免过度换手率。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案完全基于参考资料，且直接正面回答了关于换手率要求的问题。"
+      }
+    },
+    {
+      "id": "s27",
+      "type": "in_scope",
+      "question": "单笔交易的手续费比例上限是多少？",
+      "expect_ids": [
+        27
+      ],
+      "retrieved_similarities": [
+        0.8952,
+        0.4544,
+        0.4518,
+        0.4441,
+        0.3994
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 1,
+      "max_similarity": 0.8951764106750488,
+      "answer": "参考资料未覆盖具体的手续费比例上限数值。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案准确指出了参考资料中缺乏具体数值的事实，既忠实于资料又正面回应了问题。"
+      }
+    },
+    {
+      "id": "s28",
+      "type": "in_scope",
+      "question": "为什么要用算法交易？",
+      "expect_ids": [
+        28
+      ],
+      "retrieved_similarities": [
+        0.8204,
+        0.541,
+        0.4588,
+        0.4388,
+        0.4052
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 2,
+      "max_similarity": 0.8204072713851929,
+      "answer": "为了减少市场冲击。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案完全基于参考资料中的事实，并且直接正面地回答了问题。"
+      }
+    },
+    {
+      "id": "s29",
+      "type": "in_scope",
+      "question": "关联方之间的交易有限制吗？",
+      "expect_ids": [
+        29
+      ],
+      "retrieved_similarities": [
+        0.7918,
+        0.4697,
+        0.4667,
+        0.4586,
+        0.4435
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 1,
+      "max_similarity": 0.7917522192001343,
+      "answer": "有限制，禁止与关联方进行利益输送交易。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案完全基于参考资料，且直接正面回答了问题。"
+      }
+    },
+    {
+      "id": "s30",
+      "type": "in_scope",
+      "question": "需要向投资者披露哪些信息？",
+      "expect_ids": [
+        30
+      ],
+      "retrieved_similarities": [
+        0.6789,
+        0.6247,
+        0.5312,
+        0.5304,
+        0.5175
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 5,
+      "max_similarity": 0.6788744926452637,
+      "answer": "根据参考资料，需要向投资者披露的信息包括：基金净值、持仓和风险状况。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案完全基于参考资料，准确且直接地回答了需要向投资者披露的信息。"
+      }
+    },
+    {
+      "id": "s31",
+      "type": "in_scope",
+      "question": "营销宣传上不能做什么？",
+      "expect_ids": [
+        31
+      ],
+      "retrieved_similarities": [
+        0.5781,
+        0.2809,
+        0.2779,
+        0.2716,
+        0.2591
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 1,
+      "max_similarity": 0.5780501365661621,
+      "answer": "不能进行误导性营销（如夸大历史业绩）。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案完全基于参考资料，且直接准确地回答了问题。"
+      }
+    },
+    {
+      "id": "s32",
+      "type": "in_scope",
+      "question": "冷静期是怎么规定的？",
+      "expect_ids": [
+        32
+      ],
+      "retrieved_similarities": [
+        0.6444,
+        0.3013,
+        0.2773,
+        0.2646,
+        0.2603
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 1,
+      "max_similarity": 0.6444174647331238,
+      "answer": "根据参考资料，冷静期的规定为：允许投资者在一定期限内无理由退出。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案完全基于参考资料，准确且直接地回答了关于冷静期规定的问题。"
+      }
+    },
+    {
+      "id": "s33",
+      "type": "in_scope",
+      "question": "风险揭示书要包含什么内容？",
+      "expect_ids": [
+        33
+      ],
+      "retrieved_similarities": [
+        0.8347,
+        0.477,
+        0.4312,
+        0.3984,
+        0.3918
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 1,
+      "max_similarity": 0.8346707820892334,
+      "answer": "根据参考资料，风险揭示书需要包含清晰的风险提示，如“本金可能亏损”。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案完全基于参考资料，准确且直接地回答了风险揭示书需要包含的内容。"
+      }
+    },
+    {
+      "id": "s34",
+      "type": "in_scope",
+      "question": "投资者投诉怎么处理？",
+      "expect_ids": [
+        34
+      ],
+      "retrieved_similarities": [
+        0.822,
+        0.4536,
+        0.4087,
+        0.3945,
+        0.3711
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 1,
+      "max_similarity": 0.8220483064651489,
+      "answer": "根据参考资料，仅提及设立投资者投诉处理机制，未覆盖具体的投诉处理流程或方式。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案准确反映了参考资料的内容，未引入外部信息，并如实指出资料缺乏具体处理流程，正面回应了问题。"
+      }
+    },
+    {
+      "id": "s35",
+      "type": "in_scope",
+      "question": "杠杆倍数限制是多少？",
+      "expect_ids": [
+        35
+      ],
+      "retrieved_similarities": [
+        0.9208,
+        0.7349,
+        0.5001,
+        0.471,
+        0.4643
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 3,
+      "max_similarity": 0.9207843542098999,
+      "answer": "不超过5倍。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案直接回答了问题，且内容完全基于参考资料中关于杠杆倍数的限制说明。"
+      }
+    },
+    {
+      "id": "s36",
+      "type": "in_scope",
+      "question": "侧袋账户可以随意使用吗？",
+      "expect_ids": [
+        36
+      ],
+      "retrieved_similarities": [
+        0.806,
+        0.4087,
+        0.3336,
+        0.3287,
+        0.3101
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 1,
+      "max_similarity": 0.8059573769569397,
+      "answer": "不可以。禁止“侧袋账户”滥用。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案直接正面回答了问题，且所有事实均严格来源于参考资料，未引入任何外部信息。"
+      }
+    },
+    {
+      "id": "s37",
+      "type": "in_scope",
+      "question": "锁定期一般多长？",
+      "expect_ids": [
+        37
+      ],
+      "retrieved_similarities": [
+        0.6561,
+        0.3332,
+        0.3226,
+        0.3187,
+        0.3037
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 1,
+      "max_similarity": 0.6560574769973755,
+      "answer": "资料未明确说明一般多长，仅举例为3年（3年内不得赎回）。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案准确反映了参考资料中关于锁定期的信息，未引入外部内容，且直接回答了问题。"
+      }
+    },
+    {
+      "id": "s38",
+      "type": "in_scope",
+      "question": "GP 的跟投比例有限制吗？",
+      "expect_ids": [
+        38
+      ],
+      "retrieved_similarities": [
+        0.8441,
+        0.4991,
+        0.477,
+        0.4595,
+        0.4428
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 1,
+      "max_similarity": 0.8440877199172974,
+      "answer": "是的，有限制。根据参考资料，限制 GP（普通合伙人）的跟投比例。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案完全基于参考资料，准确且正面地回答了问题。"
+      }
+    },
+    {
+      "id": "s39",
+      "type": "in_scope",
+      "question": "LP 需要满足什么条件？",
+      "expect_ids": [
+        39
+      ],
+      "retrieved_similarities": [
+        0.7049,
+        0.3222,
+        0.2778,
+        0.2647,
+        0.2439
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 1,
+      "max_similarity": 0.7048847675323486,
+      "answer": "LP需要符合合格投资者标准。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案完全基于参考资料，且直接准确地回答了问题。"
+      }
+    },
+    {
+      "id": "s40",
+      "type": "in_scope",
+      "question": "FATCA 有什么合规要求？",
+      "expect_ids": [
+        40
+      ],
+      "retrieved_similarities": [
+        0.8155,
+        0.4015,
+        0.3963,
+        0.3888,
+        0.3443
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 1,
+      "max_similarity": 0.8154970407485962,
+      "answer": "参考资料未覆盖FATCA的具体合规要求。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案准确指出参考资料中缺乏具体合规要求的信息，未捏造事实，且对问题做出了合理的基于资料的回应。"
+      }
+    },
+    {
+      "id": "s41",
+      "type": "in_scope",
+      "question": "外汇对冲比例的上限是多少？",
+      "expect_ids": [
+        41
+      ],
+      "retrieved_similarities": [
+        0.8519,
+        0.5254,
+        0.5057,
+        0.4975,
+        0.4751
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 3,
+      "max_similarity": 0.8519092202186584,
+      "answer": "根据参考资料，外汇对冲比例的上限是不超过净资产的 50%。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案准确提取了参考资料中的信息并直接回答了问题，没有引入任何外部内容。"
+      }
+    },
+    {
+      "id": "s42",
+      "type": "in_scope",
+      "question": "OFAC 制裁名单上的企业能投吗？",
+      "expect_ids": [
+        42
+      ],
+      "retrieved_similarities": [
+        0.8202,
+        0.4931,
+        0.4207,
+        0.38,
+        0.3336
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 1,
+      "max_similarity": 0.8201525807380676,
+      "answer": "不能。禁止投资。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案直接正面回答了问题，且所有事实均严格来源于参考资料，无额外信息。"
+      }
+    },
+    {
+      "id": "s43",
+      "type": "in_scope",
+      "question": "汇率风险用什么工具管理？",
+      "expect_ids": [
+        43
+      ],
+      "retrieved_similarities": [
+        0.5307,
+        0.5155,
+        0.4984,
+        0.4782,
+        0.437
+      ],
+      "hit@1": false,
+      "hit@5": true,
+      "hit@5_passed": false,
+      "mrr": 0.3333333333333333,
+      "n_retrieved": 5,
+      "n_passed": 2,
+      "max_similarity": 0.5306843519210815,
+      "answer": "资料未覆盖。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案准确指出参考资料中未直接提及汇率风险的管理工具，既忠实于给定资料，又合理回应了问题。"
+      }
+    },
+    {
+      "id": "s44",
+      "type": "in_scope",
+      "question": "单一国家市场的风险敞口上限是多少？",
+      "expect_ids": [
+        44
+      ],
+      "retrieved_similarities": [
+        0.8953,
+        0.4889,
+        0.4714,
+        0.422,
+        0.3994
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 1,
+      "max_similarity": 0.8952686786651611,
+      "answer": "不超过20%。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案直接回答了问题，且内容完全基于参考资料中提供的数值，未引入外部信息。"
+      }
+    },
+    {
+      "id": "s45",
+      "type": "in_scope",
+      "question": "需要聘请外部审计吗？",
+      "expect_ids": [
+        45
+      ],
+      "retrieved_similarities": [
+        0.7504,
+        0.4654,
+        0.3922,
+        0.3861,
+        0.3616
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 1,
+      "max_similarity": 0.7503936290740967,
+      "answer": "需要。需聘请独立第三方审计机构进行年度审计。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案完全基于参考资料，且直接正面回答了问题。"
+      }
+    },
+    {
+      "id": "s46",
+      "type": "in_scope",
+      "question": "内部合规官的职责是什么？",
+      "expect_ids": [
+        46
+      ],
+      "retrieved_similarities": [
+        0.7391,
+        0.3933,
+        0.3824,
+        0.3435,
+        0.3372
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 1,
+      "max_similarity": 0.7391048073768616,
+      "answer": "根据参考资料，内部合规官的职责是定期检查交易记录。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案完全基于参考资料，准确且直接地回答了内部合规官的职责。"
+      }
+    },
+    {
+      "id": "s47",
+      "type": "in_scope",
+      "question": "基金经理需要申报个人交易账户吗？",
+      "expect_ids": [
+        47
+      ],
+      "retrieved_similarities": [
+        0.9192,
+        0.5896,
+        0.5805,
+        0.5179,
+        0.502
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 5,
+      "max_similarity": 0.9191544651985168,
+      "answer": "需要。基金经理需要申报个人交易账户以防止利益冲突。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案直接正面回答了问题，且所有事实均严格来源于参考资料，无额外信息。"
+      }
+    },
+    {
+      "id": "s48",
+      "type": "in_scope",
+      "question": "区块链技术用在交易的哪个环节？",
+      "expect_ids": [
+        48
+      ],
+      "retrieved_similarities": [
+        0.7604,
+        0.4784,
+        0.3138,
+        0.3017,
+        0.2958
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 1,
+      "max_similarity": 0.7603721022605896,
+      "answer": "根据参考资料，区块链技术用在交易的**记录**环节。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案准确提取了参考资料中的信息，直接且正面地回答了问题，没有引入任何外部内容。"
+      }
+    },
+    {
+      "id": "s49",
+      "type": "in_scope",
+      "question": "举报人保护机制是什么？",
+      "expect_ids": [
+        49
+      ],
+      "retrieved_similarities": [
+        0.7999,
+        0.5082,
+        0.345,
+        0.2864,
+        0.2847
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 2,
+      "max_similarity": 0.799936056137085,
+      "answer": "参考资料未覆盖，未说明举报人保护机制的具体定义。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案准确指出了参考资料中缺乏具体定义的事实，未捏造资料外信息，并针对问题做出了合理的说明。"
+      }
+    },
+    {
+      "id": "p01",
+      "type": "paraphrase",
+      "question": "咱们的钱能不能买数字货币？",
+      "expect_ids": [
+        8
+      ],
+      "retrieved_similarities": [
+        0.3623,
+        0.3216,
+        0.2719,
+        0.2683,
+        0.2624
+      ],
+      "hit@1": false,
+      "hit@5": true,
+      "hit@5_passed": false,
+      "mrr": 0.2,
+      "n_retrieved": 5,
+      "n_passed": 0,
+      "max_similarity": 0.3622705936431885,
+      "judge": {
+        "faithfulness": null,
+        "relevance": null,
+        "reason": "无片段过阈值，按拒答处理"
+      }
+    },
+    {
+      "id": "p02",
+      "type": "paraphrase",
+      "question": "组合亏到什么程度必须停下来？",
+      "expect_ids": [
+        6
+      ],
+      "retrieved_similarities": [
+        0.352,
+        0.3514,
+        0.326,
+        0.3206,
+        0.3142
+      ],
+      "hit@1": false,
+      "hit@5": false,
+      "hit@5_passed": false,
+      "mrr": 0.0,
+      "n_retrieved": 5,
+      "n_passed": 0,
+      "max_similarity": 0.35203343629837036,
+      "judge": {
+        "faithfulness": null,
+        "relevance": null,
+        "reason": "无片段过阈值，按拒答处理"
+      }
+    },
+    {
+      "id": "p03",
+      "type": "paraphrase",
+      "question": "怎么防止基金经理搞老鼠仓？",
+      "expect_ids": [
+        47,
+        11
+      ],
+      "retrieved_similarities": [
+        0.5788,
+        0.5055,
+        0.496,
+        0.485,
+        0.4189
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 2,
+      "max_similarity": 0.5787693858146667,
+      "answer": "根据参考资料，防止基金经理搞老鼠仓（利益冲突）的措施包括：\n1. 要求基金经理申报个人交易账户。\n2. 严格遵守《证券法》《基金法》及相关监管规定。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案完全基于参考资料，准确且直接地回答了如何防止基金经理搞老鼠仓的问题，无多余信息。"
+      }
+    },
+    {
+      "id": "p04",
+      "type": "paraphrase",
+      "question": "客户买完后悔了能退吗？",
+      "expect_ids": [
+        32
+      ],
+      "retrieved_similarities": [
+        0.3632,
+        0.3226,
+        0.3099,
+        0.3045,
+        0.2921
+      ],
+      "hit@1": false,
+      "hit@5": true,
+      "hit@5_passed": false,
+      "mrr": 0.3333333333333333,
+      "n_retrieved": 5,
+      "n_passed": 0,
+      "max_similarity": 0.36324453353881836,
+      "judge": {
+        "faithfulness": null,
+        "relevance": null,
+        "reason": "无片段过阈值，按拒答处理"
+      }
+    },
+    {
+      "id": "p05",
+      "type": "paraphrase",
+      "question": "煤炭石油这类生意还能投吗？",
+      "expect_ids": [
+        20
+      ],
+      "retrieved_similarities": [
+        0.3871,
+        0.3629,
+        0.3417,
+        0.3113,
+        0.2954
+      ],
+      "hit@1": false,
+      "hit@5": true,
+      "hit@5_passed": false,
+      "mrr": 0.3333333333333333,
+      "n_retrieved": 5,
+      "n_passed": 0,
+      "max_similarity": 0.38706105947494507,
+      "judge": {
+        "faithfulness": null,
+        "relevance": null,
+        "reason": "无片段过阈值，按拒答处理"
+      }
+    },
+    {
+      "id": "p06",
+      "type": "paraphrase",
+      "question": "怎么确保交易成本压到最低？",
+      "expect_ids": [
+        25
+      ],
+      "retrieved_similarities": [
+        0.5935,
+        0.5814,
+        0.5813,
+        0.5093,
+        0.4271
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 4,
+      "max_similarity": 0.5934808850288391,
+      "answer": "为确保交易成本压到最低，可采取以下措施：\n1. 采用最佳执行（Best Execution）原则；\n2. 采用算法交易以减少市场冲击；\n3. 禁止频繁交易（避免过度换手率）；\n4. 设定单笔交易的最大手续费比例。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案完全基于参考资料，未引入任何外部信息，且直接、正面地回答了如何降低交易成本的问题。"
+      }
+    },
+    {
+      "id": "p07",
+      "type": "paraphrase",
+      "question": "有没有机制让内部人不敢乱来？",
+      "expect_ids": [
+        11,
+        46,
+        49
+      ],
+      "retrieved_similarities": [
+        0.453,
+        0.4149,
+        0.4127,
+        0.3657,
+        0.3587
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": false,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 0,
+      "max_similarity": 0.45302170515060425,
+      "judge": {
+        "faithfulness": null,
+        "relevance": null,
+        "reason": "无片段过阈值，按拒答处理"
+      }
+    },
+    {
+      "id": "p08",
+      "type": "paraphrase",
+      "question": "净值多久要让投资人知道一次？",
+      "expect_ids": [
+        30
+      ],
+      "retrieved_similarities": [
+        0.6787,
+        0.509,
+        0.4967,
+        0.4756,
+        0.4693
+      ],
+      "hit@1": true,
+      "hit@5": true,
+      "hit@5_passed": true,
+      "mrr": 1.0,
+      "n_retrieved": 5,
+      "n_passed": 2,
+      "max_similarity": 0.6786621809005737,
+      "answer": "参考资料未覆盖具体的披露频率，仅说明需“定期”向投资者披露基金净值。",
+      "judge": {
+        "faithfulness": 5,
+        "relevance": 5,
+        "reason": "答案准确指出参考资料仅提及“定期”披露而未说明具体频率，完全忠实于资料且直接回应了问题。"
+      }
+    }
+  ]
+}
