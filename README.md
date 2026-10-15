@@ -92,6 +92,11 @@
 | LLM-as-judge Faithfulness / Relevance | 5.0 / 5.0（58 题中 53 题计分）——**该指标在此知识库上已饱和、丧失区分度** | 同上 |
 | 系统规模（AST 静态统计） | 7 MCP Server、14 工具、8 处 SSE 客户端连接 | `metrics/project_metrics.json` |
 
+> 口径说明：`project_metrics.json` 里 `agents: 10` 是**跨文件的 Agent 定义数**——
+> 同一组 5 个 Agent 在 `finance_assistant_main.py`（命令行入口）与
+> `multi_user_finance_assistant_main_with_session.py`（多用户会话入口）中各定义一次，
+> AST 脚本按文件累加得 10。**去重后是 5 个 Agent**，架构图里的 5 个节点即指此。
+
 复现方式：`python metrics/quantify_static.py`、`python metrics/quantify_ema_backtest.py`
 （两者均无需 API Key）。检索评测需向量化，见下节。
 
