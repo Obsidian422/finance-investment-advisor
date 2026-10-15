@@ -86,9 +86,14 @@
 | RAG 命中链路端到端延迟 | 13.6s | `docs/run_logs/run_business.txt` |
 | 未命中联网兜底链路延迟 | 31.7s | 同上 |
 | 多用户会话隔离测试 | 上下文沿用 / 隔离 / 业务切换三类断言全部通过 | `docs/test_results.md` |
+| RAG 检索 Hit@1 / Hit@5（in_scope 50 题） | 0.980 / 1.000，MRR 0.9867 | `project2_finance_assistant/eval/eval_results.json` |
+| 同义改写 Hit@5（paraphrase 8 题） | 0.875，MRR 0.6083（如实记录为语义泛化的薄弱环） | 同上 |
+| 拒答准确率（out_of_scope 8 题） | 1.000；误召最高相似度 0.3684，低于线上阈值 0.5 | 同上 |
+| LLM-as-judge Faithfulness / Relevance | 5.0 / 5.0（58 题中 53 题计分）——**该指标在此知识库上已饱和、丧失区分度** | 同上 |
 | 系统规模（AST 静态统计） | 7 MCP Server、14 工具、8 处 SSE 客户端连接 | `metrics/project_metrics.json` |
 
-复现方式：`python metrics/quantify_static.py`、`python metrics/quantify_ema_backtest.py`。
+复现方式：`python metrics/quantify_static.py`、`python metrics/quantify_ema_backtest.py`
+（两者均无需 API Key）。检索评测需向量化，见下节。
 
 ## 项目目录
 
@@ -98,6 +103,12 @@ finance-investment-advisor/
 ├── LICENSE
 ├── requirements.txt                  # 顶层依赖清单(参考用)
 ├── .env.example                      # 环境变量模板
+├── Dockerfile                        # 单镜像:7 个 MCP Server 与主应用共用
+├── docker-compose.yml                # 一键起全栈(mcp-servers / app / gradio)
+├── .dockerignore
+├── docker/
+│   ├── entrypoint-mcp-servers.sh     # 容器内拉起全部 MCP Server
+│   └── healthcheck.py                # TCP 建连探活 7 个端口(不用 curl 探 SSE)
 ├── start_servers.sh                  # 一键启动脚本(阶段二)
 ├── stop_servers.sh                   # 一键停止脚本(进程名+端口双重清理)
 ├── data/                             # 备用股票日线 CSV
@@ -123,6 +134,10 @@ finance-investment-advisor/
 │   ├── chat_api.py                   # FastAPI 接口服务 (端口 9998)
 │   ├── chat_api_post.py              # 接口测试脚本
 │   ├── gradio_demo.py                # Gradio 前端 (端口 9996)
+│   ├── eval/                         # RAG 检索评测(带标注评测集 + 脚本 + 结果)
+│   │   ├── golden_set.json           # 66 题:in_scope 50 / paraphrase 8 / out_of_scope 8
+│   │   ├── run_eval.py               # 检索指标 + 可选 LLM-as-judge
+│   │   └── eval_results.json         # 最近一次运行结果
 │   ├── 投资政策.xlsx                  # RAG 知识库源数据
 │   └── 全球增长基金的表现与风险分析.docx  # 文章审查样例文档
 ├── docs/                             # 架构/配置/运行结果/测试/调试文档
@@ -342,6 +357,33 @@ python multi_sse_mcp_client.py
 
 参见 [使用说明](#使用说明)，`server_url` 填 `127.0.0.1`。
 
+### Docker Compose 一键起全栈
+
+```bash
+cp .env.example .env      # 填好 API_KEY
+docker compose up --build
+```
+
+起来之后：
+
+| 服务 | 地址 | 说明 |
+|---|---|---|
+| `mcp-servers` | 容器内 7335/7336/7337/8335/8336/9330/9339 | 7 个 FastMCP Server 同容器运行 |
+| `app` | http://localhost:9998 | FastAPI 多用户会话接口 |
+| `gradio` | http://localhost:9996 | Gradio 前端 |
+
+两个设计取舍：
+
+- **7 个 MCP Server 放同一个容器**，不拆成 7 个。代码里所有 Server 地址都拼成
+  `http://{server_url}:<port>/sse`，`server_url` 是**单个值**，7 个 Server 靠端口区分，
+  因此必须处于同一主机名下；拆开后一个 `server_url` 无法同时指向 7 个 hostname。
+  应用侧跨容器访问时把 `server_url` 指向 `mcp-servers` 服务名即可。
+- **健康检查只做 TCP 建连**，不用 curl 探 `/sse`——SSE 是长连接，curl 会一直挂着不返回。
+
+> **状态说明**：本机开发环境未安装 Docker，`docker-compose.yml` 与 `Dockerfile`
+> 尚未在真实 Docker 环境完成构建验证，属于「已写好但未跑通」的状态。构建脚本本身
+> 是完整的，首次 `docker compose up --build` 时以实际输出为准。
+
 ### 远程服务器部署
 
 若 MCP Server 部署在远程服务器，将 `.env` 中 `server_url` 改为对应公网 IP：
@@ -368,9 +410,26 @@ nohup uvicorn chat_api:app --host 0.0.0.0 --port 9998 --workers 1 > logs/api.log
 |---|---|---|
 | 端到端业务回归 | `python tests/run_business_demo.py` | 跑通金融问答 + 股票分析两条业务链；含 `rag_probe` 探针直查向量库输出召回片段与相似度 |
 | 多用户会话测试 | `python tests/test_multi_user.py` | 自动创建双 Session，断言上下文沿用、会话隔离、业务切换三类行为；结果归档 `docs/run_logs/` |
+| RAG 检索评测 | `cd project2_finance_assistant && python eval/run_eval.py` | 66 题带标注评测集，输出 Hit@K / MRR / 拒答正确率；追加 `--judge` 启用 LLM-as-judge。需 `API_KEY` |
 | 预测精度回测 | `python metrics/quantify_ema_backtest.py` | 无需 API Key；EMA 滚动回测，输出 MAE/RMSE/MAPE/方向准确率 |
 | 工程规模统计 | `python metrics/quantify_static.py` | 无需 API Key；AST 解析统计 Server/工具/连接/接口数量 |
 | 过程文档 | `docs/run_results.md`、`docs/test_results.md`、`docs/debug_log.md` | 真实运行指标、测试结论与三次故障的"现象→定位→修复→复测"闭环记录 |
+
+### 检索评测的设计取舍（`eval/`）
+
+把「RAG 效果还行」变成可复现的数字，几个刻意的设计：
+
+- **召回与生成分开评。** 生成答错但召回对了，和召回本身就错了，是两类完全不同的 bug；
+  混在一个总分里定位不了问题。所以第一层只测检索指标（Hit@1 / Hit@5 / Recall@5 / MRR），
+  第二层才用 LLM-as-judge 测 Faithfulness 与 Answer Relevance。
+- **拒答单列成一类，不混进准确率。** 「未命中显式拒答」是这个系统的关键设计之一，
+  不单独测就等于没验证。`out_of_scope` 8 题看的是拒答正确率与误召最高相似度。
+- **阈值取线上真实值 `min_similarity=0.5`**（见 `finance_consult_mcp_server.py`），
+  不是评测时另拍一个数——否则测的就不是线上那套判定逻辑。
+- **ground truth 用 xlsx 的 0-based 行号**做文本匹配，不依赖 Chroma 的 id 生成方式，
+  换向量库或重建索引都不会让评测集失效。
+- **如实保留弱项**：`paraphrase` 类（同义改写）Hit@5 只有 0.875、MRR 0.6083，
+  明显低于 `in_scope`，说明语义泛化是当前链路的薄弱环节，没有被总分掩盖。
 
 ## FAQ
 
@@ -388,6 +447,17 @@ nohup uvicorn chat_api:app --host 0.0.0.0 --port 9998 --workers 1 > logs/api.log
 
 **Q: 两个阶段能同时运行吗？**
 可以，端口互不冲突（阶段一用 7335/7336/7337，阶段二用 8335/8336/9330/9339）。但需各自激活对应的虚拟环境。
+
+## 关于开发方式
+
+本仓库的代码与文档在 **Claude Code 辅助下**完成，提交信息里保留了
+`Co-Authored-By: Claude Code` 的署名。
+
+架构取舍（为什么阶段一手写 MCP Client、阶段二才上 Agents SDK；为什么 7 个
+MCP Server 必须同容器）、评测集设计（为什么召回与生成要分开评、为什么拒答要
+单列）、以及三次「装不上 / 跑不起来」故障的定位（mcp 2.x 改名、根目录漏
+openpyxl、litellm 残留依赖导致安装失败），是自己做的判断与排查；AI 承担的是
+实现、文档整理与评测脚本编写的吞吐。所有指标均可由仓库内脚本复跑。
 
 ## License
 
