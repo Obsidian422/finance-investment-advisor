@@ -8,8 +8,10 @@
 #   · FastAPI   http://localhost:9998
 #   · Gradio    http://localhost:9996
 #
-# ⚠ 本文件尚未在 Docker 环境构建验证过（开发机没有装 Docker）。
-#   首次 `docker compose up --build` 后请把结果反馈回来，我再据实修正。
+# ⚠ 状态：尚未在 Docker 环境完成构建验证（开发机未安装 Docker）。
+#   已完成静态核对：7 个 entrypoint 脚本路径均存在、源码端口与 healthcheck 端口
+#   一致（7335/7336/7337/8335/8336/9330/9339）、compose YAML 合法、宿主端口无冲突。
+#   首次 `docker compose up --build` 若与实际不符，按实际输出修正本文件。
 # =============================================================================
 
 services:
