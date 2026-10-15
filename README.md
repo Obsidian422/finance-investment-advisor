@@ -1,6 +1,16 @@
 # 金融投资多智能体助理系统
 
-> 基于 MCP（Model Context Protocol）与 OpenAI Agents SDK 构建的多智能体金融助理，覆盖股价预测、金融咨询、文章风险审查与转人工四大业务场景。系统分两个阶段演进：先手写 MCP 客户端验证 Agent–工具调用协议原理，再基于 Agents SDK 重构为多智能体生产形态。
+> 基于 MCP（Model Context Protocol）与 OpenAI Agents SDK 构建的多智能体金融助理，覆盖股价预测、金融咨询、文章风险审查与转人工四大业务场景。系统分两个阶段演进：先手写 MCP 客户端验证 Agent–工具调用协议原理，再基于 Agents SDK 重构为多智能体形态。
+
+**起点说明**：本项目**起步于一门 Agent 开发课程的项目作业**（业务场景与初始骨架来自课程），之后自行做了较大幅度的整理与扩展。属于自己增量的部分：
+
+- **`project2_finance_assistant/eval/`** —— 66 题带标注检索评测集与评测脚本（课程版本没有）
+- **`docs/`** —— 架构设计、配置说明、运行结果、测试结论与故障调试记录
+- **`tests/`** —— 端到端业务回归与多用户会话隔离的自动化断言
+- **Docker 容器化** —— `Dockerfile` / `docker-compose.yml` / healthcheck 与入口脚本
+- **三次「装不上 / 跑不起来」故障的定位与修复** —— 详见 [关于开发方式](#关于开发方式)
+
+架构取舍、评测集设计与故障排查是自己做的判断；课程提供的是场景与起点。**下面所有指标均可由仓库内脚本复跑。**
 
 [![Python](https://img.shields.io/badge/python-3.11+-blue)]()
 [![MCP](https://img.shields.io/badge/MCP-1.28-purple)]()

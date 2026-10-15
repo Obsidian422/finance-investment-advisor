@@ -16,7 +16,8 @@
 | **Consult Agent** | 金融知识问答：先查本地知识库（RAG），无可靠答案时回退联网检索 | `finance_consult_mcp_server`：<br>• `invest_policy_consult_tool`（本地 RAG）<br>• `finance_news_search_consult_tool`（联网检索） | 当用户咨询金融政策、投资相关问题（需要知识问答）时 |
 | **Human Agent**（代码中为 `turn_human Agent`） | 转人工服务：按当前业务场景（金融咨询 / 股票预测 / 文章审查 / 通用）转接对应人工客服 | `turn_human_server`：<br>• `turn_human_tool` | 当用户明确要求转人工，或业务需要人工介入时 |
 
-> 说明：本系统 5 个智能体**全部启用**，无「本次未启用」项。
+> 说明：上表 5 个智能体均为启用状态。Switch Agent 只持有 handoffs 列表、不挂载任何
+> MCP Server，其余 4 个各挂 1 个 Server；不存在未挂载工具的智能体。
 
 ---
 
